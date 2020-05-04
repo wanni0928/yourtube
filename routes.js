@@ -1,3 +1,5 @@
+// URL의 경로 이름들을 담는 장소. 나중에 주소를 조합할때, 일일이 외울 수 없으므로, 존재하는 모든 URL들을 따로 모아서, 필요할 때마다 갖다 쓰도록 한다.
+
 // Global
 const HOME = "/";
 const JOIN = "/join";
@@ -8,8 +10,8 @@ const SEARCH = "/search";
 // Users
 const USERS = "/users";
 const USER_DETAIL = "/:id";
-const EDIT_PROFILE = "/edit-profile";
-const CHANGE_PASSWORD = "/change-password";
+const EDIT_PROFILE = "users/edit-profile";
+const CHANGE_PASSWORD = "users/change-password";
 
 // Videos
 const VIDEOS = "/videos";
@@ -25,12 +27,24 @@ const routes = {
     logout : LOGOUT,
     search : SEARCH,
     users : USERS,
-    userDetail : USER_DETAIL,
+    userDetail : id => {
+        if (id){
+            return `/users/${id}`;
+        } else {
+            return USER_DETAIL;
+        }
+    },
     editProfile : EDIT_PROFILE,
     changePassword : CHANGE_PASSWORD,
     videos : VIDEOS,
     upload : UPLOAD,
-    videoDetail : VIDEO_DETAIL,
+    videoDetail : (id) => {
+        if(id){
+            return `/videos/${id}`;
+        }else{
+            return VIDEO_DETAIL;
+        }
+    },
     editVideo : EDIT_VIDEO,
     deleteVideo : DELETE_VIDEO
 };
