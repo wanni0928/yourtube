@@ -1,6 +1,7 @@
 mixin videoBlock(video = {})
     //- 객체가 mixin에 입력되면, 그 객체의 title을 받아와서 화면에 표시한다.
     .videoBlock
-        video.videoBlock-thumnail(src=video.videoFile, controls=true)
-        h4.videoBlock-title=video.title
-        h6.videoBlock-views=video.views
+        a(href=routes.videoDetail(video.id))
+            video.videoBlock-thumnail(src=video.videoFile, controls=true)
+            h4.videoBlock-title=video.title
+            h6.videoBlock-views=video.views
