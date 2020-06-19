@@ -1,8 +1,14 @@
 //init.js application을 시작할때 필요한 함수들을 선언한 파일
-
+import dotenv from "dotenv"; //dotenv 환경변수 : 크로스 플랫폼(win, linux, mac 과 같은 운영체제들)을 지원하기 위해 사용하는 라이브러리, 혹은 숨기고 싶은 변수 값(암호, 포트번호 등등)을 사용할 때, 이용.
+import "./db";
 import app from "./app";
 
-const PORT = 4000;
+dotenv.config();
+import "./models/Video";
+import "./models/Comment";
+import "./models/User";
+
+const PORT = process.env.PORT || 4000;
 
 const handleListening = () => console.log(`Listening on: http://localhost:${PORT}`);
 
