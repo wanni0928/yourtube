@@ -12,13 +12,28 @@ const USERS = "/users";
 const USER_DETAIL = "/:id";
 const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PASSWORD = "/change-password";
+const ME = "/me";
 
 // Videos
+// controller에서 어떤 data를 가지고 있다는 것을 표현하고 싶으면 더블클론(:)과 같은 이름을 넣으면 된다. ex) :id -> id 라는 변수의 데이터를 받는다.
 const VIDEOS = "/videos";
 const UPLOAD = "/upload";
 const VIDEO_DETAIL = "/:id";
 const EDIT_VIDEO = "/:id/edit";
 const DELETE_VIDEO = "/:id/delete";
+
+// Github
+const GITHUB = "/auth/github";
+const GITHUB_CALLBACK = "/auth/github/callback"
+
+// facebook
+const FB = "/auth/facebook";
+const FB_CALLBACK = "/auth/facebook/callback";
+
+//API
+const API = "/api";
+const REGISTER_VIEW = "/:id/view";
+const ADD_COMMENT = "/:id/comment";
 
 const routes = {
     home : HOME,
@@ -45,8 +60,28 @@ const routes = {
             return VIDEO_DETAIL;
         }
     },
-    editVideo : EDIT_VIDEO,
-    deleteVideo : DELETE_VIDEO
+    editVideo : (id) => {
+        if(id){
+            return `/videos/${id}/edit`;
+        } else{
+            return EDIT_VIDEO;
+        }
+    },
+    deleteVideo : (id) => {
+        if(id){
+            return `/videos/${id}/delete`;
+        } else {
+            return DELETE_VIDEO;
+        }
+    },
+    github: GITHUB,
+    githubCallback: GITHUB_CALLBACK,
+    me: ME,
+    facebook: FB,
+    facebookCallback: FB_CALLBACK,
+    api : API,
+    registerView : REGISTER_VIEW,
+    addComment : ADD_COMMENT
 };
 
 export default routes;
